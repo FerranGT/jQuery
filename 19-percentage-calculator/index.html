@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Percentage Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style>
+		.container {
+			border:1px solid #aaa;
+			width: 75%;
+			margin-top:30px;
+			padding: 20px;
+			border-radius: 10px;
+			font-size: 1.5em;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<section>
+
+
+			<form id="f1" action="#" class="form-inline form-group">
+				<fieldset class="row">
+					<div class="col-md-6 ">
+						<p>What is <input class="form-control" id="f1-a" type="text" size="3">% of <input class="form-control" id="f1-b" type="text" size="7">?</p>
+					</div>
+					<div class="col-md-6">
+						<button id="f1-calculate" class="form-control btn btn-primary">Calculate</button>
+						<!-- result = a / 100 * b; -->
+						<input id="f1-result" class="form-control" type="text" size="7" readonly="readonly">
+						<span class="remove">%</span>
+					</div>
+					<div class="col-md-12 hide ko1">
+						<p id="helpBlock1" class="help-block">Something went wrong!!!</p>
+					</div>
+				</fieldset>
+			</form>
+
+
+			<form id="f2" action="#" class="form-inline form-group">
+				<fieldset class="row">
+					<div class="col-md-6">
+						<p><input class="form-control" id="f2-a" type="text" size="5"> is what percent of <input class="form-control" id="f2-b" type="text" size="5">?</p>
+					</div>
+					<div class="col-md-6">
+						<button id="f2-calculate" class="form-control btn btn-primary">Calculate</button>
+						<!-- result = a / b * 100; -->
+						<input id="f2-result" class="form-control" type="text" size="7" readonly="readonly">
+						<span>%</span>
+					</div>
+					<div class="col-md-12 hide ko2">
+						<p id="helpBlock1" class="help-block">Something went wrong!!!</p>
+					</div>
+				</fieldset>
+			</form>
+
+			<form id="f3" action="#" class="form-inline form-group">
+				<fieldset class="row">
+					<div class="col-md-6">
+						<p>What is the percentage increase/decrease<br>from <input class="form-control" id="f3-a" type="text" size="6"> to <input class="form-control" id="f3-b" type="text" size="6">?</p>
+					</div>
+					<div class="col-md-6">
+						<button id="f3-calculate" class="form-control btn btn-primary">Calculate</button>
+						<!-- result = (b - a) / a  * 100; -->
+						<input id="f3-result" class="form-control" type="text" size="7" readonly="readonly">
+						<span>%</span>
+					</div>
+					<div class="col-md-12 hide ko3">
+						<p id="helpBlock1" class="help-block">Something went wrong!!!</p>
+					</div>
+				</fieldset>
+			</form>
+
+			<p id="tips"><strong>Tips:</strong> Use tab to move to the next field. Use shift-tab to move to the previous field. Press enter to calculate.</p>
+		</section>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script>
+		$("#f1-calculate").on("click",function(){
+			var num1 = $("#f1-a").val();
+			var num2 = $("#f1-b").val();
+			var parsednum1 = parseInt(num1,10);
+			var parsednum2 = parseInt(num2,10);
+			//console.log($("#f1-a").val());
+			//if ((num1=="\n") || (num2=="\n")) {$("#f1-a").val("0");}
+			if ((isNaN(parsednum1)==true) || (isNaN(parsednum2)==true)){ 
+				$(".ko1").removeClass("hide");
+				$("#f1").addClass("has-error");			
+				$("#f1-a").val(" ");
+				$("#f1-b").val(" ");
+			}else{
+				result = num1 / 100 * num2;
+				$("#f1-result").val(result);
+			}
+		});	
+		$("#f2-calculate").on("click",function(){
+			var num3 = $("#f2-a").val();
+			var num4 = $("#f2-b").val();
+			var parsednum3 = parseInt(num3,10);
+			var parsednum4 = parseInt(num4,10);
+			if ((isNaN(parsednum3)==true) || (isNaN(parsednum4)==true)){ 
+				$(".ko2").removeClass("hide");
+				$("#f2").addClass("has-error");	
+				$("#f2-a").val("");
+				$("#f2-b").val("");
+			}else{
+				result = num3 / num4 * 100;
+				$("#f2-result").val(result);
+			}
+		});	
+		$("#f3-calculate").on("click",function(){
+			var num5 = $("#f3-a").val();
+			var num6 = $("#f3-b").val();
+			var parsednum5 = parseInt(num5,10);
+			var parsednum5 = parseInt(num6,10);
+			if ((isNaN(parsednum5)==true) || (isNaN(parsednum6)==true)){ 
+				$(".ko3").removeClass("hide");
+				$("#f3").addClass("has-error");	
+				$("#f3-a").val("");
+				$("#f3-b").val("");
+			}else{
+				result = (num6 - num5) / num5  * 100;
+				$("#f3-result").val(result);
+			}
+		});	
+	</script>
+	
+
+</body>
+</html>

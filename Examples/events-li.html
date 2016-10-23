@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.selected {
+			background: yellow;
+		}
+		ul li {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>my project title</h1>
+	<button class="remove-last">Remove Students</button>
+	<button  class="add-list">Add Students</button>
+	<ul id="listStudents"></ul>
+	<ul id="listTemp">
+		<li>John</li>
+		<li>Paul</li>
+		<li>George</li>
+		<li>Ringo</li>
+	</ul>
+
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+	<script>
+
+		(function () {
+
+			var counter = 0;
+
+			var students = ["Oscar", "Ferran", "Daniel Muñoz", "Daniel Alcaraz",  "Alejandro", "Ruben Ortiz", "Ruben Sanchez", "Cristina", "Manuel", "Sergio", "Albert"];
+
+			$(".remove-last").on("click", function() {
+					console.log ("Element removed = " + students.pop() );
+					$(".add-list").trigger("click");
+			})
+
+			$(".add-list").on("click", function() {
+
+					var itemsList = students.map( function( nameStudent ) {
+						return '<li>' + nameStudent.toUpperCase() + '</li>'
+					})
+
+					$("ul#listStudents").html( itemsList.join('') )
+
+					$("#listStudents li").on("click", function() {
+						console.log("button clicked!")
+						console.log(counter++)
+						$(this).addClass("selected");
+					})
+
+			})
+
+			$("#listTemp li").on("click", function() {
+				$(this).addClass("selected");
+			})
+
+			console.log(students)
+
+		})()
+
+
+
+	</script>
+
+
+</body>
+</html>

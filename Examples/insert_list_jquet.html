@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+
+	<h1>my project title</h1>
+	<ul id="students"></ul>
+
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+	<script>
+
+		var students = ["Oscar", "Ferran", "Daniel Muñoz", "Daniel Alcaraz",  "Alejandro", "Ruben Ortiz", "Ruben Sanchez", "Cristina", "Manuel", "Sergio", "Albert"];
+
+		var itemsList = students.map( function( nameStudent ) {
+			return '<li>' + nameStudent.toUpperCase() + '</li>'
+		})
+
+		$("ul#students").html( itemsList.join('') )
+
+	</script>
+
+
+</body>
+</html>
