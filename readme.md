@@ -4,8 +4,8 @@ This repo contains some jQuery exercices done during the bootcamp Skylab Coders 
 
 These jQuery are:
 
-* [19-percentage-calculator](https://github.com/FerranGT/Bootstrap/tree/master/01-photoapp-website)
+* [19-percentage-calculator](https://github.com/FerranGT/jQuery/tree/master/19-percentage-calculator)
 
-* [Examples](https://github.com/FerranGT/Bootstrap/tree/master/02-portfolio)
+* [Examples](https://github.com/FerranGT/jQuery/tree/master/Examples)
 
-* [jQuery-koans-master](https://github.com/FerranGT/Bootstrap/tree/master/02-portfolio)
+* [jQuery-koans-master](https://github.com/FerranGT/jQuery/tree/master/jQuery-koans-master)
